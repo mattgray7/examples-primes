@@ -3,15 +3,15 @@ public class PrintPrimes {
 	int maxRows;
 	int maxColumns;
 	int WW;
-	int ORDMAX;
+	int ordMax;
 	int listOfPrimes[];
 
-	public PrintPrimes(int numberOfPrimes, int maxRows, int maxColumns, int WW, int ORDMAX) {
+	public PrintPrimes(int numberOfPrimes, int maxRows, int maxColumns, int WW, int ordMax) {
 		this.numberOfPrimes   = numberOfPrimes;
 		this.maxRows  = maxRows;
 		this.maxColumns  = maxColumns;
 		this.WW  = WW;
-		this.ORDMAX = ORDMAX;
+		this.ordMax = ordMax;
 		this.listOfPrimes = new int[numberOfPrimes + 1];
 	}
 
@@ -33,36 +33,36 @@ public class PrintPrimes {
 
 	private void calculateOddPrimes() {
 		boolean isJPrime;
-		int N;
-		int nonPrimes[] = new int[ORDMAX + 1];
+		int n;
+		int nonPrimes[] = new int[ordMax + 1];
 
-		int J = 1;
-		int ORD = 2;
+		int j = 1;
+		int ord = 2;
 		int primeSquared = 9;
 
 		for(int primesFoundSoFar = 2; primesFoundSoFar <= numberOfPrimes; primesFoundSoFar++) {
 			do {
-				J = J + 2;
-				if (J == primeSquared) {
-					ORD = ORD + 1;
-					primeSquared = listOfPrimes[ORD] * listOfPrimes[ORD];
-					nonPrimes[ORD - 1] = J;
+				j = j + 2;
+				if (j == primeSquared) {
+					ord = ord + 1;
+					primeSquared = listOfPrimes[ord] * listOfPrimes[ord];
+					nonPrimes[ord - 1] = j;
 				}
-				N = 2;
+				n = 2;
 				isJPrime = true;
 				
-				while (N < ORD && isJPrime) {
-					while (nonPrimes[N] < J){
-						nonPrimes[N] = nonPrimes[N] + listOfPrimes[N] + listOfPrimes[N];
+				while (n < ord && isJPrime) {
+					while (nonPrimes[n] < j){
+						nonPrimes[n] = nonPrimes[n] + listOfPrimes[n] + listOfPrimes[n];
 					}
 					
-					if (nonPrimes[N] == J){
+					if (nonPrimes[n] == j){
 						isJPrime = false;
 					}
-					N = N + 1;
+					n = n + 1;
 				}
 			} while (!isJPrime);
-			listOfPrimes[primesFoundSoFar] = J;
+			listOfPrimes[primesFoundSoFar] = j;
 		}
 	}
 
