@@ -1,9 +1,9 @@
 public class PrintPrimes {
-	int numberOfPrimes; 
-	int maxRows;			//maximum rows per page
-	int maxColumns;			//maximum columns on one page
-	int orderMax;			
-	int listOfPrimes[];		//stores the prime numbers found
+	private int numberOfPrimes; 
+	private int maxRows;			//maximum rows per page
+	private int maxColumns;			//maximum columns on one page
+	private int orderMax;			
+	private int listOfPrimes[];		//stores the prime numbers found
 	
 	// placeHolder is not used in this class, need to keep as constructor in case other 
 	// programs call PrintPrimes with 5 constructors.
