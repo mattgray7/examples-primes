@@ -61,37 +61,47 @@ public class PrintPrimes {
 					multiplesOfPrimes[order - 1] = j;
 				}
 				
-				//starting values for comparison to prime multiples
-				tempIndex = 2;
-				isJPrime = true;
-				
-				//compare j to multiples of primes already found to determine if j is prime
-				while (tempIndex < order && isJPrime) {
-					
-					/* While j is greater than the current composite number being compared, increment the 
-					 * composite number by the smallest viable increment and compare again. The smallest 
-					 * viable increment is found by adding 2 times the current prime number to the current 
-					 * composite number.It is added twice because only odd numbers need to be considered.
-					 */
-					while (multiplesOfPrimes[tempIndex] < j){
-						multiplesOfPrimes[tempIndex] = multiplesOfPrimes[tempIndex] + 2*listOfPrimes[tempIndex];
-					}
-					
-					//if j is a multiple of a prime, set isJPrime to false and exit outer while loop
-					if (multiplesOfPrimes[tempIndex] == j){
-						isJPrime = false;
-					}
-					
-					//increment temporary index to get next multiple of current prime
-					tempIndex++;
-				}
+				//check if j is a prime number by comparing to array of prime multiples
+				isJPrime = checkJPrime(j, order, multiplesOfPrimes);
+
 			} while (!isJPrime);	
-			
 			// Only stores when isJPrime is true and no prime multiple is found, meaning that j is a prime 
 			// number and should be stored
 			listOfPrimes[primesFoundSoFar] = j;		
 		}
 	}
+	
+	
+	//returns true if J is prime, false if j equals a prime multiple
+	public boolean checkJPrime(int j, int order, int[] multiplesOfPrimes){
+		
+		//starting values for comparison to prime multiples
+		int tempIndex = 2;
+		boolean isJPrime = true;
+		
+		//compare j to multiples of primes already found to determine if j is prime
+		while (tempIndex < order && isJPrime) {
+			
+			/* While j is greater than the current composite number being compared, increment the 
+			 * composite number by the smallest viable increment and compare again. The smallest 
+			 * viable increment is found by adding 2 times the current prime number to the current 
+			 * composite number.It is added twice because only odd numbers need to be considered.
+			 */
+			while (multiplesOfPrimes[tempIndex] < j){
+				multiplesOfPrimes[tempIndex] = multiplesOfPrimes[tempIndex] + 2*listOfPrimes[tempIndex];
+			}
+			
+			//if j is a multiple of a prime, set isJPrime to false and exit outer while loop
+			if (multiplesOfPrimes[tempIndex] == j){
+				isJPrime = false;
+			}
+			
+			//increment temporary index to get next multiple of current prime
+			tempIndex++;
+		}
+		return isJPrime;
+	}
+	
 	
 	//prints the primes found in a row-column format
 	public void printPrimes() {
@@ -107,6 +117,7 @@ public class PrintPrimes {
 			pageOffset = pageOffset + maxRows * maxColumns;
         }
 	}
+	
 	
 	//prints primes on one page, format depends on maxRows and maxColumns
 	public void printPage(int pageOffset, int pageNumber){
