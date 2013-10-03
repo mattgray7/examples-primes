@@ -51,27 +51,41 @@ public class PrintPrimes {
 
 		for(int primesFoundSoFar = 2; primesFoundSoFar <= numberOfPrimes; primesFoundSoFar++) {
 			do {
-				j = j + 2;
+				//increment counter by 2 since odd numbers only need to be considered
+				j = j + 2;		
+				
 				if (j == primeSquared) {
 					ord++;
 					primeSquared = listOfPrimes[ord] * listOfPrimes[ord];
 					multiplesOfPrimes[ord - 1] = j;
 				}
+				
 				tempIndex = 2;
 				isJPrime = true;
 				
 				while (tempIndex < ord && isJPrime) {
+					
+					/* While j is greater than the current composite number being compared, increment the 
+					 * composite number by the smallest viable increment. The smallest viable increment
+					 * is found by adding 2 times the current prime number to the current composite number.
+					 * It is added twice because only odd numbers need to be considered.*/
 					while (multiplesOfPrimes[tempIndex] < j){
 						multiplesOfPrimes[tempIndex] = multiplesOfPrimes[tempIndex] + listOfPrimes[tempIndex] + listOfPrimes[tempIndex];
 					}
 					
+					//if j is a multiple of another prime, set isJPrime to false and exit outer while loop
 					if (multiplesOfPrimes[tempIndex] == j){
 						isJPrime = false;
 					}
+					
+					//increment temporary index to get next multiple of current prime
 					tempIndex++;
 				}
-			} while (!isJPrime);
-			listOfPrimes[primesFoundSoFar] = j;
+			} while (!isJPrime);	
+			
+			// Only stores when isJPrime is true and no prime multiple is found, meaning that j is a prime 
+			// number and should be stored
+			listOfPrimes[primesFoundSoFar] = j;		
 		}
 	}
 
