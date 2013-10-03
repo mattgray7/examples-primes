@@ -2,7 +2,7 @@ public class PrintPrimes {
 	int numberOfPrimes; 
 	int maxRows;
 	int maxColumns;
-	int ordMax;				
+	int orderMax;				
 	int listOfPrimes[];		//stores the prime numbers found
 	
 	// placeHolder is not used in this class, need to keep as constructor in case other 
@@ -10,12 +10,12 @@ public class PrintPrimes {
 	int placeHolder;
 
 	
-	public PrintPrimes(int numberOfPrimes, int maxRows, int maxColumns, int placeHolder, int ordMax) {
+	public PrintPrimes(int numberOfPrimes, int maxRows, int maxColumns, int placeHolder, int orderMax) {
 		this.numberOfPrimes   = numberOfPrimes;
 		this.maxRows  = maxRows;
 		this.maxColumns  = maxColumns;
 		this.placeHolder  = placeHolder;
-		this.ordMax = ordMax;
+		this.orderMax = orderMax;
 		this.listOfPrimes = new int[numberOfPrimes + 1];
 	}
 
@@ -44,10 +44,10 @@ public class PrintPrimes {
 	private void calculateOddPrimes() {
 		boolean isJPrime;
 		int tempIndex;
-		int j = 1;
-		int ord = 2;
+		int j = 1;	//odd counter
+		int order = 2;
 		int primeSquared = 9;
-		int multiplesOfPrimes[] = new int[ordMax + 1];		//stores odd multiple of primes found so far
+		int multiplesOfPrimes[] = new int[orderMax + 1];		//stores odd multiple of primes found so far
 
 		for(int primesFoundSoFar = 2; primesFoundSoFar <= numberOfPrimes; primesFoundSoFar++) {
 			do {
@@ -56,9 +56,9 @@ public class PrintPrimes {
 				
 				//if j equals a square, add the square to prime multiples array and update primeSquared
 				if (j == primeSquared) {
-					ord++;
-					primeSquared = listOfPrimes[ord] * listOfPrimes[ord];
-					multiplesOfPrimes[ord - 1] = j;
+					order++;
+					primeSquared = listOfPrimes[order] * listOfPrimes[order];
+					multiplesOfPrimes[order - 1] = j;
 				}
 				
 				//starting values for comparison to prime multiples
@@ -66,7 +66,7 @@ public class PrintPrimes {
 				isJPrime = true;
 				
 				//compare j to multiples of primes already found to determine if j is prime
-				while (tempIndex < ord && isJPrime) {
+				while (tempIndex < order && isJPrime) {
 					
 					/* While j is greater than the current composite number being compared, increment the 
 					 * composite number by the smallest viable increment and compare again. The smallest 
