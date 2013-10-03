@@ -1,14 +1,15 @@
 public class PrintPrimes {
-	int numberOfPrimes;
+	int numberOfPrimes; 
 	int maxRows;
 	int maxColumns;
-	int ordMax;
+	int ordMax;				
 	int listOfPrimes[];
 	
 	/*placeHolder is not used in this class, need to keep as constructor in case other 
 	programs call PrintPrimes with 5 constructors.*/
 	int placeHolder;
 
+	
 	public PrintPrimes(int numberOfPrimes, int maxRows, int maxColumns, int placeHolder, int ordMax) {
 		this.numberOfPrimes   = numberOfPrimes;
 		this.maxRows  = maxRows;
@@ -34,13 +35,14 @@ public class PrintPrimes {
 		calculateOddPrimes();
 	}
 
+	
 	private void calculateOddPrimes() {
 		boolean isJPrime;
 		int tempIndex;
 		int j = 1;
 		int ord = 2;
 		int primeSquared = 9;
-		int nonPrimes[] = new int[ordMax + 1];
+		int multiplesOfPrimes[] = new int[ordMax + 1];		//stores odd multiple of primes found so far
 
 		for(int primesFoundSoFar = 2; primesFoundSoFar <= numberOfPrimes; primesFoundSoFar++) {
 			do {
@@ -48,17 +50,17 @@ public class PrintPrimes {
 				if (j == primeSquared) {
 					ord = ord + 1;
 					primeSquared = listOfPrimes[ord] * listOfPrimes[ord];
-					nonPrimes[ord - 1] = j;
+					multiplesOfPrimes[ord - 1] = j;
 				}
 				tempIndex = 2;
 				isJPrime = true;
 				
 				while (tempIndex < ord && isJPrime) {
-					while (nonPrimes[tempIndex] < j){
-						nonPrimes[tempIndex] = nonPrimes[tempIndex] + listOfPrimes[tempIndex] + listOfPrimes[tempIndex];
+					while (multiplesOfPrimes[tempIndex] < j){
+						multiplesOfPrimes[tempIndex] = multiplesOfPrimes[tempIndex] + listOfPrimes[tempIndex] + listOfPrimes[tempIndex];
 					}
 					
-					if (nonPrimes[tempIndex] == j){
+					if (multiplesOfPrimes[tempIndex] == j){
 						isJPrime = false;
 					}
 					tempIndex = tempIndex + 1;
