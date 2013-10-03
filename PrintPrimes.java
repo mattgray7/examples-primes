@@ -1,3 +1,8 @@
+/* Matthew Gray - 260454725
+ * ECSE321 Assignment 2
+ * Prime number calculator
+ */
+
 public class PrintPrimes {
 	private int numberOfPrimes; 
 	private int maxRows;			//maximum rows per page
