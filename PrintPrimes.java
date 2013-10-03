@@ -1,15 +1,15 @@
 public class PrintPrimes {
 	int numberOfPrimes; 
-	int maxRows;
-	int maxColumns;
-	int orderMax;				
+	int maxRows;			//maximum rows per page
+	int maxColumns;			//maximum columns on one page
+	int orderMax;			
 	int listOfPrimes[];		//stores the prime numbers found
 	
 	// placeHolder is not used in this class, need to keep as constructor in case other 
 	// programs call PrintPrimes with 5 constructors.
 	int placeHolder;
 
-	
+	//initialize local variables
 	public PrintPrimes(int numberOfPrimes, int maxRows, int maxColumns, int placeHolder, int orderMax) {
 		this.numberOfPrimes   = numberOfPrimes;
 		this.maxRows  = maxRows;
@@ -62,8 +62,8 @@ public class PrintPrimes {
 				
 				//check if j is a prime number by comparing to array of prime multiples
 				isJPrime = checkJPrime(j, order, multiplesOfPrimes);
-
 			} while (!isJPrime);	
+			
 			// Only stores when isJPrime is true and no prime multiple is found, meaning that j is a prime 
 			// number and should be stored
 			listOfPrimes[primesFoundSoFar] = j;		
@@ -132,7 +132,7 @@ public class PrintPrimes {
 				}
 				
 			}
-			System.out.println("");
+			System.out.println("");		//line break
 		}
 	}
 	
