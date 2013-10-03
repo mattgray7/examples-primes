@@ -2,15 +2,18 @@ public class PrintPrimes {
 	int numberOfPrimes;
 	int maxRows;
 	int maxColumns;
-	int WW;
 	int ordMax;
 	int listOfPrimes[];
+	
+	/*placeHolder is not used in this class, need to keep as constructor in case other 
+	programs call PrintPrimes with 5 constructors.*/
+	int placeHolder;
 
-	public PrintPrimes(int numberOfPrimes, int maxRows, int maxColumns, int WW, int ordMax) {
+	public PrintPrimes(int numberOfPrimes, int maxRows, int maxColumns, int placeHolder, int ordMax) {
 		this.numberOfPrimes   = numberOfPrimes;
 		this.maxRows  = maxRows;
 		this.maxColumns  = maxColumns;
-		this.WW  = WW;
+		this.placeHolder  = placeHolder;
 		this.ordMax = ordMax;
 		this.listOfPrimes = new int[numberOfPrimes + 1];
 	}
