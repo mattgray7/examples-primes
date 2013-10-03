@@ -74,8 +74,7 @@ public class PrintPrimes {
 		
 		while (pageOffset <= numberOfPrimes) {
 			System.out.println("The First " + numberOfPrimes +
-                               " Prime Numbers --- Page " + pageNumber);
-			System.out.println("");
+                               " Prime Numbers --- Page " + pageNumber + "\n");
 			
 			for (int rowOffset = pageOffset; rowOffset < pageOffset + maxRows; rowOffset++){
 				for (int cols = 0; cols < maxColumns; cols++){	
