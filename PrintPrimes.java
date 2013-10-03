@@ -3,7 +3,7 @@ public class PrintPrimes {
 	int maxRows;
 	int maxColumns;
 	int ordMax;				
-	int listOfPrimes[];
+	int listOfPrimes[];		//stores the prime numbers found
 	
 	// placeHolder is not used in this class, need to keep as constructor in case other 
 	// programs call PrintPrimes with 5 constructors.
@@ -92,7 +92,8 @@ public class PrintPrimes {
 			listOfPrimes[primesFoundSoFar] = j;		
 		}
 	}
-
+	
+	//prints the primes found in a row-column format
 	public void printPrimes() {
 		int pageNumber = 1;
 		int pageOffset = 1;
@@ -107,15 +108,19 @@ public class PrintPrimes {
         }
 	}
 	
+	//prints primes on one page, format depends on maxRows and maxColumns
 	public void printPage(int pageOffset, int pageNumber){
 		System.out.println("The First " + numberOfPrimes +
                 " Prime Numbers --- Page " + pageNumber + "\n");
 		
 		for (int rowOffset = pageOffset; rowOffset < (pageOffset + maxRows); rowOffset++){
 			for (int cols = 0; cols < maxColumns; cols++){	
-				if (rowOffset + cols * maxRows <= numberOfPrimes){
-					System.out.format("%10d", listOfPrimes[rowOffset + cols * maxRows]);
+				int currentIndex = rowOffset + cols*maxRows;
+				
+				if (currentIndex <= numberOfPrimes){
+					System.out.format("%10d", listOfPrimes[currentIndex]);
 				}
+				
 			}
 			System.out.println("");
 		}
