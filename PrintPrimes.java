@@ -54,21 +54,25 @@ public class PrintPrimes {
 				//increment counter by 2 since odd numbers only need to be considered
 				j = j + 2;		
 				
+				//if j equals a square, add the square to prime multiples array and update primeSquared
 				if (j == primeSquared) {
 					ord++;
 					primeSquared = listOfPrimes[ord] * listOfPrimes[ord];
 					multiplesOfPrimes[ord - 1] = j;
 				}
 				
+				//starting values for comparison to prime multiples
 				tempIndex = 2;
 				isJPrime = true;
 				
+				//compare j to multiples of primes already found to determine if j is prime
 				while (tempIndex < ord && isJPrime) {
 					
 					/* While j is greater than the current composite number being compared, increment the 
-					 * composite number by the smallest viable increment. The smallest viable increment
-					 * is found by adding 2 times the current prime number to the current composite number.
-					 * It is added twice because only odd numbers need to be considered.*/
+					 * composite number by the smallest viable increment and compare again. The smallest 
+					 * viable increment is found by adding 2 times the current prime number to the current 
+					 * composite number.It is added twice because only odd numbers need to be considered.
+					 */
 					while (multiplesOfPrimes[tempIndex] < j){
 						multiplesOfPrimes[tempIndex] = multiplesOfPrimes[tempIndex] + 2*listOfPrimes[tempIndex];
 					}
