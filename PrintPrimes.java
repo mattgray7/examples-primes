@@ -5,8 +5,8 @@ public class PrintPrimes {
 	int ordMax;				
 	int listOfPrimes[];
 	
-	/*placeHolder is not used in this class, need to keep as constructor in case other 
-	programs call PrintPrimes with 5 constructors.*/
+	// placeHolder is not used in this class, need to keep as constructor in case other 
+	// programs call PrintPrimes with 5 constructors.
 	int placeHolder;
 
 	
@@ -35,11 +35,11 @@ public class PrintPrimes {
 		calculateOddPrimes();
 	}
 
-	/*	Calculates odd primes numbers using the "Sieve of Eratosthenes" algorithm 
-	 * 	wherein odd multiples of primes already found are marked and stored in the 
-	 *  multiplesOfPrimes array. As the variable j increases, it is compared to 
-	 *  the elements in multiplesOfPrimes and if a match is found, j is not prime
-	 *  and is therefore incremented and compared again to multiplesOfPrimes.
+	/*	Calculates odd primes numbers using a variation of the "Sieve of Eratosthenes" 
+	 *  algorithm wherein odd multiples of primes already found are marked and stored 
+	 *  in the multiplesOfPrimes array. As the variable j increases, it is compared to 
+	 *  the elements in multiplesOfPrimes and if a match is found, j is not prime and
+	 *  is therefore incremented and compared again to multiplesOfPrimes.
 	 */
 	private void calculateOddPrimes() {
 		boolean isJPrime;
@@ -51,7 +51,7 @@ public class PrintPrimes {
 
 		for(int primesFoundSoFar = 2; primesFoundSoFar <= numberOfPrimes; primesFoundSoFar++) {
 			do {
-				//increment counter by 2 since odd numbers only need to be considered
+				//increment counter by 2 since odd numbers only need to be considered, evens are non-prime
 				j = j + 2;		
 				
 				//if j equals a square, add the square to prime multiples array and update primeSquared
@@ -77,7 +77,7 @@ public class PrintPrimes {
 						multiplesOfPrimes[tempIndex] = multiplesOfPrimes[tempIndex] + 2*listOfPrimes[tempIndex];
 					}
 					
-					//if j is a multiple of another prime, set isJPrime to false and exit outer while loop
+					//if j is a multiple of a prime, set isJPrime to false and exit outer while loop
 					if (multiplesOfPrimes[tempIndex] == j){
 						isJPrime = false;
 					}
@@ -98,23 +98,29 @@ public class PrintPrimes {
 		int pageOffset = 1;
 		
 		while (pageOffset <= numberOfPrimes) {
-			System.out.println("The First " + numberOfPrimes +
-                               " Prime Numbers --- Page " + pageNumber + "\n");
 			
-			for (int rowOffset = pageOffset; rowOffset < pageOffset + maxRows; rowOffset++){
-				for (int cols = 0; cols < maxColumns; cols++){	
-					if (rowOffset + cols * maxRows <= numberOfPrimes){
-						System.out.format("%10d", listOfPrimes[rowOffset + cols * maxRows]);
-					}
-				}
-				System.out.println("");
-			}
+			printPage(pageOffset, pageNumber);
 			
 			System.out.println("\f");
 			pageNumber++;
 			pageOffset = pageOffset + maxRows * maxColumns;
         }
 	}
+	
+	public void printPage(int pageOffset, int pageNumber){
+		System.out.println("The First " + numberOfPrimes +
+                " Prime Numbers --- Page " + pageNumber + "\n");
+		
+		for (int rowOffset = pageOffset; rowOffset < (pageOffset + maxRows); rowOffset++){
+			for (int cols = 0; cols < maxColumns; cols++){	
+				if (rowOffset + cols * maxRows <= numberOfPrimes){
+					System.out.format("%10d", listOfPrimes[rowOffset + cols * maxRows]);
+				}
+			}
+			System.out.println("");
+		}
+	}
+	
 }
 
 					 
