@@ -43,7 +43,6 @@ public class PrintPrimes {
 	 */
 	private void calculateOddPrimes() {
 		boolean isJPrime;
-		int tempIndex;
 		int j = 1;	//odd counter
 		int order = 2;
 		int primeSquared = 9;
