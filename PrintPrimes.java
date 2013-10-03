@@ -70,7 +70,7 @@ public class PrintPrimes {
 					 * is found by adding 2 times the current prime number to the current composite number.
 					 * It is added twice because only odd numbers need to be considered.*/
 					while (multiplesOfPrimes[tempIndex] < j){
-						multiplesOfPrimes[tempIndex] = multiplesOfPrimes[tempIndex] + listOfPrimes[tempIndex] + listOfPrimes[tempIndex];
+						multiplesOfPrimes[tempIndex] = multiplesOfPrimes[tempIndex] + 2*listOfPrimes[tempIndex];
 					}
 					
 					//if j is a multiple of another prime, set isJPrime to false and exit outer while loop
