@@ -35,7 +35,12 @@ public class PrintPrimes {
 		calculateOddPrimes();
 	}
 
-	
+	/*	Calculates odd primes numbers using the "Sieve of Eratosthenes" algorithm 
+	 * 	wherein odd multiples of primes already found are marked and stored in the 
+	 *  multiplesOfPrimes array. As the variable j increases, it is compared to 
+	 *  the elements in multiplesOfPrimes and if a match is found, j is not prime
+	 *  and is therefore incremented and compared again to multiplesOfPrimes.
+	 */
 	private void calculateOddPrimes() {
 		boolean isJPrime;
 		int tempIndex;
