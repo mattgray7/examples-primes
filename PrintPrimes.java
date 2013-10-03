@@ -48,7 +48,7 @@ public class PrintPrimes {
 			do {
 				j = j + 2;
 				if (j == primeSquared) {
-					ord = ord + 1;
+					ord++;
 					primeSquared = listOfPrimes[ord] * listOfPrimes[ord];
 					multiplesOfPrimes[ord - 1] = j;
 				}
@@ -63,7 +63,7 @@ public class PrintPrimes {
 					if (multiplesOfPrimes[tempIndex] == j){
 						isJPrime = false;
 					}
-					tempIndex = tempIndex + 1;
+					tempIndex++;
 				}
 			} while (!isJPrime);
 			listOfPrimes[primesFoundSoFar] = j;
@@ -88,7 +88,7 @@ public class PrintPrimes {
 			}
 			
 			System.out.println("\f");
-			pageNumber = pageNumber + 1;
+			pageNumber++;
 			pageOffset = pageOffset + maxRows * maxColumns;
         }
 	}
